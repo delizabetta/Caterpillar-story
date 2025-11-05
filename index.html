@@ -1,80 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Very Hungry Caterpillar</title>
-  <style>
-    body {
-      font-family: 'Comic Sans MS', sans-serif;
-      background-color: #e6f9e6;
-      text-align: center;
-      padding: 40px;
-    }
-    h1 {
-      color: #2e7d32;
-    }
-    .food {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 4px solid #66bb6a;
-      object-fit: cover;
-      margin: 10px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-    .food:hover {
-      transform: scale(1.1);
-    }
-    button {
-      background-color: #81c784;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #66bb6a;
-    }
-    p {
-      font-size: 20px;
-      color: #2e7d32;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Very Hungry Caterpillar</title>
+<style>
+  body {
+    font-family: "Comic Sans MS", sans-serif;
+    text-align: center;
+    background-color: #fdf6ec;
+    color: #3b3b3b;
+    margin: 0;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 2.5em;
+    color: #2b7a0b;
+    margin-bottom: 10px;
+  }
+  .day {
+    margin: 40px 0;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #fff8dc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .sentence {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  .food {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .food img {
+    width: 120px;
+    height: auto;
+    transition: transform 0.3s;
+  }
+  .food img:hover {
+    transform: scale(1.1);
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    background-color: #8fd694;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #7cc582;
+  }
+</style>
 </head>
 <body>
 
-  <h1>🐛 The Very Hungry Caterpillar</h1>
-  <p id="message">On Monday he ate one apple.</p>
+<h1>The Very Hungry Caterpillar</h1>
+<p>Click a day to hear or read what the caterpillar ate!</p>
 
-  <img id="foodImage" class="food" src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" alt="apple">
-
-  <div>
-    <button onclick="changeDay('Monday', 'apple', 1, 'https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg')">Monday</button>
-    <button onclick="changeDay('Tuesday', 'pear', 2, 'https://upload.wikimedia.org/wikipedia/commons/1/17/Pear.jpg')">Tuesday</button>
-    <button onclick="changeDay('Wednesday', 'plum', 3, 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Plum.jpg')">Wednesday</button>
-    <button onclick="changeDay('Thursday', 'strawberry', 4, 'https://upload.wikimedia.org/wikipedia/commons/2/29/PerfectStrawberry.jpg')">Thursday</button>
-    <button onclick="changeDay('Friday', 'orange', 5, 'https://upload.wikimedia.org/wikipedia/commons/c/c4/Orange-Fruit-Pieces.jpg')">Friday</button>
+<div class="day">
+  <div class="sentence">On Monday he ate <strong>one apple</strong>.</div>
+  <div class="food">
+    <img src="https://cdn.pixabay.com/photo/2017/01/31/19/13/apple-2028200_1280.png" alt="Apple">
   </div>
+  <button onclick="speak('On Monday he ate one apple.')">🔊 Listen</button>
+</div>
 
-  <button onclick="speak()">🔊 Listen again</button>
+<div class="day">
+  <div class="sentence">On Tuesday he ate <strong>two pears</strong>.</div>
+  <div class="food">
+    <img src="https://cdn.pixabay.com/photo/2016/02/23/17/32/pear-1219981_1280.png" alt="Pear">
+    <img src="https://cdn.pixabay.com/photo/2016/02/23/17/32/pear-1219981_1280.png" alt="Pear">
+  </div>
+  <button onclick="speak('On Tuesday he ate two pears.')">🔊 Listen</button>
+</div>
 
-  <script>
-    let message = 'On Monday he ate one apple.';
+<div class="day">
+  <div class="sentence">On Wednesday he ate <strong>three plums</strong>.</div>
+  <div class="food">
+    <img src="https://cdn.pixabay.com/photo/2014/04/03/10/23/plum-310228_1280.png" alt="Plum">
+    <img src="https://cdn.pixabay.com/photo/2014/04/03/10/23/plum-310228_1280.png" alt="Plum">
+    <img src="https://cdn.pixabay.com/photo/2014/04/03/10/23/plum-310228_1280.png" alt="Plum">
+  </div>
+  <button onclick="speak('On Wednesday he ate three plums.')">🔊 Listen</button>
+</div>
 
-    function changeDay(day, food, count, img) {
-      message = `On ${day} he ate ${count} ${food}${count > 1 ? 's' : ''}.`;
-      document.getElementById('message').textContent = message;
-      document.getElementById('foodImage').src = img;
-      speak();
-    }
+<div class="day">
+  <div class="sentence">On Thursday he ate <strong>four strawberries</strong>.</div>
+  <div class="food">
+    <img src="https://cdn.pixabay.com/photo/2017/01/13/15/55/strawberry-1970052_1280.png" alt="Strawberry">
+    <img src="https://cdn.pixabay.com/photo/2017/01/13/15/55/strawberry-1970052_1280.png" alt="Strawberry">
+    <img src="https://cdn.pixabay.com/photo/2017/01/13/15/55/strawberry-1970052_1280.png" alt="Strawberry">
+    <img src="https://cdn.pixabay.com/photo/2017/01/13/15/55/strawberry-1970052_1280.png" alt="Strawberry">
+  </div>
+  <button onclick="speak('On Thursday he ate four strawberries.')">🔊 Listen</button>
+</div>
 
-    function speak() {
-      const utter = new SpeechSynthesisUtterance(message);
-      speechSynthesis.speak(utter);
-    }
-  </script>
+<div class="day">
+  <div class="sentence">On Friday he ate <strong>five oranges</strong>.</div>
+  <div class="food">
+    <img src="https://cdn.pixabay.com/photo/2016/02/19/11/30/orange-1202314_1280.png" alt="Orange">
+    <img src="https://cdn.pixabay.com/photo/2016/02/19/11/30/orange-1202314_1280.png" alt="Orange">
+    <img src="https://cdn.pixabay.com/photo/2016/02/19/11/30/orange-1202314_1280.png" alt="Orange">
+    <img src="https://cdn.pixabay.com/photo/2016/02/19/11/30/orange-1202314_1280.png" alt="Orange">
+    <img src="https://cdn.pixabay.com/photo/2016/02/19/11/30/orange-1202314_1280.png" alt="Orange">
+  </div>
+  <button onclick="speak('On Friday he ate five oranges.')">🔊 Listen</button>
+</div>
+
+<script>
+function speak(text) {
+  if ('speechSynthesis' in window) {
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-GB'; // British English
+    utter.rate = 0.9;
+    speechSynthesis.speak(utter);
+  } else {
+    alert("Sorry, your browser doesn't support speech synthesis.");
+  }
+}
+</script>
+
 </body>
 </html>
