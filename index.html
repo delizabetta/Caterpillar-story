@@ -1,110 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Very Hungry Caterpillar</title>
-<style>
-  body {
-    font-family: "Comic Sans MS", sans-serif;
-    text-align: center;
-    background-color: #f8fce9;
-  }
-  h1 {
-    color: #2b7a0b;
-    font-size: 2.8em;
-  }
-  .day {
-    margin: 40px;
-  }
-  .day button {
-    background-color: #8fd694;
-    border: none;
-    border-radius: 12px;
-    padding: 15px 25px;
-    font-size: 1.2em;
-    cursor: pointer;
-  }
-  .day button:hover {
-    background-color: #6bbf59;
-  }
-  .fruit-container img {
-    width: 120px;
-    margin: 5px;
-    display: inline-block;
-  }
-  .sentence {
-    font-size: 1.8em;
-    color: #2a3d66;
-    margin-top: 10px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Very Hungry Caterpillar - Interactive Story</title>
+  <style>
+    body {
+      font-family: "Comic Sans MS", sans-serif;
+      background-color: #f8f9f4;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #2e7d32;
+      font-size: 2.5em;
+    }
+    button {
+      background-color: #81c784;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      padding: 12px 25px;
+      margin: 10px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #66bb6a;
+    }
+    .story {
+      display: none;
+      margin-top: 20px;
+    }
+    .sentence {
+      font-size: 1.6em;
+      color: #33691e;
+      margin-bottom: 10px;
+    }
+    .images {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    img {
+      width: 100px;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    img:hover {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
 <body>
+  <h1>🐛 The Very Hungry Caterpillar 🐛</h1>
+  <p>Click a day to see what the caterpillar ate!</p>
 
-<h1>🐛 The Very Hungry Caterpillar</h1>
-<p>Click a day to see what the caterpillar ate!</p>
+  <div>
+    <button onclick="showDay('monday')">Monday</button>
+    <button onclick="showDay('tuesday')">Tuesday</button>
+    <button onclick="showDay('wednesday')">Wednesday</button>
+    <button onclick="showDay('thursday')">Thursday</button>
+    <button onclick="showDay('friday')">Friday</button>
+  </div>
 
-<div class="day">
-  <button onclick="showFruits('Monday', 'apple', 1)">Monday</button>
-  <div id="Monday" class="fruit-container"></div>
-</div>
+  <!-- Monday -->
+  <div id="monday" class="story">
+    <div class="sentence">On Monday he ate one apple.</div>
+    <div class="images">
+      <img src="Red_Apple.png" alt="Apple" />
+    </div>
+  </div>
 
-<div class="day">
-  <button onclick="showFruits('Tuesday', 'pear', 2)">Tuesday</button>
-  <div id="Tuesday" class="fruit-container"></div>
-</div>
+  <!-- Tuesday -->
+  <div id="tuesday" class="story">
+    <div class="sentence">On Tuesday he ate two pears.</div>
+    <div class="images">
+      <img src="Pear.png" alt="Pear" />
+      <img src="Pear.png" alt="Pear" />
+    </div>
+  </div>
 
-<div class="day">
-  <button onclick="showFruits('Wednesday', 'plum', 3)">Wednesday</button>
-  <div id="Wednesday" class="fruit-container"></div>
-</div>
+  <!-- Wednesday -->
+  <div id="wednesday" class="story">
+    <div class="sentence">On Wednesday he ate three plums.</div>
+    <div class="images">
+      <img src="Plum.png" alt="Plum" />
+      <img src="Plum.png" alt="Plum" />
+      <img src="Plum.png" alt="Plum" />
+    </div>
+  </div>
 
-<div class="day">
-  <button onclick="showFruits('Thursday', 'strawberry', 4)">Thursday</button>
-  <div id="Thursday" class="fruit-container"></div>
-</div>
+  <!-- Thursday -->
+  <div id="thursday" class="story">
+    <div class="sentence">On Thursday he ate four strawberries.</div>
+    <div class="images">
+      <img src="Strawberry.png" alt="Strawberry" />
+      <img src="Strawberry.png" alt="Strawberry" />
+      <img src="Strawberry.png" alt="Strawberry" />
+      <img src="Strawberry.png" alt="Strawberry" />
+    </div>
+  </div>
 
-<div class="day">
-  <button onclick="showFruits('Friday', 'orange', 5)">Friday</button>
-  <div id="Friday" class="fruit-container"></div>
-</div>
+  <!-- Friday -->
+  <div id="friday" class="story">
+    <div class="sentence">On Friday he ate five oranges!</div>
+    <div class="images">
+      <img src="Orange.png" alt="Orange" />
+      <img src="Orange.png" alt="Orange" />
+      <img src="Orange.png" alt="Orange" />
+      <img src="Orange.png" alt="Orange" />
+      <img src="Orange.png" alt="Orange" />
+    </div>
+  </div>
 
-<script>
-  // képek linkjei (általad feltöltendő fájlok a GitHubban)
-  const fruitImages = {
-    apple: "Red_Apple.png",
-    pear: "Pear.png",
-    plum: "Plum.png",
-    strawberry: "Strawberry.png",
-    orange: "Orange.png"
-  };
+  <script>
+    function showDay(day) {
+      const stories = document.querySelectorAll(".story");
+      stories.forEach(s => s.style.display = "none");
 
-  function showFruits(day, fruit, count) {
-    const container = document.getElementById(day);
-    container.innerHTML = "";
+      const selected = document.getElementById(day);
+      selected.style.display = "block";
 
-    // mondat
-    const sentence = document.createElement("p");
-    sentence.className = "sentence";
-    sentence.textContent = `On ${day} he ate ${count} ${fruit}${count > 1 ? "s" : ""}.`;
-    container.appendChild(sentence);
-
-    // képek
-    for (let i = 0; i < count; i++) {
-      const img = document.createElement("img");
-      img.src = fruitImages[fruit];
-      img.alt = fruit;
-      container.appendChild(img);
+      // UK English pronunciation
+      const text = selected.querySelector(".sentence").textContent;
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-GB";
+      utterance.rate = 0.9;
+      speechSynthesis.speak(utterance);
     }
-
-    // brit angol hang
-    const utter = new SpeechSynthesisUtterance(sentence.textContent);
-    utter.lang = "en-GB";  // British English
-    utter.rate = 0.9;
-    speechSynthesis.speak(utter);
-  }
-</script>
-
+  </script>
 </body>
 </html>
