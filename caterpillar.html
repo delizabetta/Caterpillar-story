@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Very Hungry Caterpillar</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', sans-serif;
+      background-color: #e6f9e6;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #2e7d32;
+    }
+    .food {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #66bb6a;
+      object-fit: cover;
+      margin: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .food:hover {
+      transform: scale(1.1);
+    }
+    button {
+      background-color: #81c784;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #66bb6a;
+    }
+    p {
+      font-size: 20px;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🐛 The Very Hungry Caterpillar</h1>
+  <p id="message">On Monday he ate one apple.</p>
+
+  <img id="foodImage" class="food" src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" alt="apple">
+
+  <div>
+    <button onclick="changeDay('Monday', 'apple', 1, 'https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg')">Monday</button>
+    <button onclick="changeDay('Tuesday', 'pear', 2, 'https://upload.wikimedia.org/wikipedia/commons/1/17/Pear.jpg')">Tuesday</button>
+    <button onclick="changeDay('Wednesday', 'plum', 3, 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Plum.jpg')">Wednesday</button>
+    <button onclick="changeDay('Thursday', 'strawberry', 4, 'https://upload.wikimedia.org/wikipedia/commons/2/29/PerfectStrawberry.jpg')">Thursday</button>
+    <button onclick="changeDay('Friday', 'orange', 5, 'https://upload.wikimedia.org/wikipedia/commons/c/c4/Orange-Fruit-Pieces.jpg')">Friday</button>
+  </div>
+
+  <button onclick="speak()">🔊 Listen again</button>
+
+  <script>
+    let message = 'On Monday he ate one apple.';
+
+    function changeDay(day, food, count, img) {
+      message = `On ${day} he ate ${count} ${food}${count > 1 ? 's' : ''}.`;
+      document.getElementById('message').textContent = message;
+      document.getElementById('foodImage').src = img;
+      speak();
+    }
+
+    function speak() {
+      const utter = new SpeechSynthesisUtterance(message);
+      speechSynthesis.speak(utter);
+    }
+  </script>
+</body>
+</html>
